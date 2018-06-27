@@ -1,4 +1,4 @@
-export class College {
+export class School {
 Name: string;
 City: string;
 MinPrice: Number;
@@ -8,9 +8,8 @@ GreekLife: boolean;
 YearFounded: Number;
 Accreditor: string;
 SubCampuses: string[];
-GenderSegregation: genderSegregation;
+GenderSegregation: genderSegregation
 GenderRation: Number;
-
 }
 
 
