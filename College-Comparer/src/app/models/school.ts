@@ -1,20 +1,17 @@
 export class School {
 Name: string;
 City: string;
-MinPrice: Number;
-MaxPrice: Number;
-Size: Number;
-GreekLife: boolean;
-YearFounded: Number;
-Accreditor: string;
-SubCampuses: string[];
-GenderSegregation: genderSegregation
-GenderRation: Number;
+State: string;
+Zip: number;
+Tuition: number;
+Size: number;
+YearFounded: number;
+Women_only: boolean;
+Men_only: boolean;
+Religious_affiliation: number;
+School_url: string;
+
 }
 
 
-enum genderSegregation {
-  OnlyMale = 'only male',
-  OnlyFemale = 'only female',
-  Coed = 'Coed'
-}
+
