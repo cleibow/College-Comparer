@@ -1,3 +1,4 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -5,7 +6,25 @@ import { AppComponent } from './app.component';
 import { CollegeComponent } from './college/college.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterComponent } from './filter/filter.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatPaginatorModule,
+  MatGridListModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatDividerModule,
+  MatIconModule,
+  MatExpansionModule,
+  MatTableModule,
+  MatRadioModule,
+  MatSortModule,
+  MatTabsModule
+  } from '@angular/material';
 
 
 @NgModule({
@@ -17,7 +36,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   imports: [
     BrowserModule,
     HttpClientModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatInputModule,
+    BrowserAnimationsModule
 
 
   ],

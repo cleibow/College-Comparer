@@ -1,6 +1,14 @@
 <mat-sidenav-container>
   <mat-sidenav>
+    <mat-radio-group>
+      <mat-radio-button>
+        Women only
+      </mat-radio-button>
+      <mat-radio-button (checked)="AddQueryToString('men_only')">
+        Men only
 
+        </mat-radio-button>
+    </mat-radio-group>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-college>

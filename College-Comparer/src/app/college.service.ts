@@ -13,16 +13,18 @@ export class CollegeService  {
 
 
   schools: School[];
+  queryString: string = "";
 
 
 
 
   constructor(private _httpClient: HttpClient) { }
   private apiKey: string = "&api_key=W1kRyK3ESFntr2k6Ku6eI6eeLFxL4klPGGs0nG4B";
-  url: string = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private url: string = "https://api.data.gov/ed/collegescorecard/v1/schools.json?";
+  private fields: string = '&_fields=2015.student.size,2015.cost.tuition.program_year,school.city,school.men_only,school.name,school.online_only,school.school_url,school.state,school.religious_affiliation,school.women_only,school.zip'
 
   getAllSchools(query: string): Observable<School[]>{
-    return this._httpClient.get<School[]>(this.url + query + this.apiKey)
+    return this._httpClient.get<School[]>(this.url + query +this.fields + this.apiKey)
   }
 
   convertDataToModel( jsonSchools: School[]):School[]{

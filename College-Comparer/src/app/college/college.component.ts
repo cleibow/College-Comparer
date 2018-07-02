@@ -1,3 +1,4 @@
+import { FilterService } from './../filter.service';
 import { School } from './../models/school';
 import { CollegeService } from './../college.service';
 import { Component, OnInit } from '@angular/core';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollegeComponent implements OnInit {
 
-  constructor(private _collegeService: CollegeService) { }
+  constructor(private _collegeService: CollegeService, private _filterService: FilterService) { }
 
   colleges: School[]
 
@@ -20,7 +21,7 @@ export class CollegeComponent implements OnInit {
   }
 
   getColleges(){
-    this._collegeService.getAllSchools('&_fields=2015.student.size,2015.cost.tuition.program_year,school.city,school.men_only,school.name,school.online_only,school.school_url,school.state,school.religious_affiliation,school.women_only,school.zip')
+    this._collegeService.getAllSchools(this._filterService.queryString)
         .subscribe(
           (res) => {
 
