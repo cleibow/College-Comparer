@@ -31,7 +31,8 @@ import {
   declarations: [
     AppComponent,
     CollegeComponent,
-    FilterComponent,
+    FilterComponent
+
   ],
   imports: [
     BrowserModule,
@@ -40,11 +41,26 @@ import {
     MatRadioModule,
     MatSelectModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    MatGridListModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatDividerModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatTableModule,
+    MatSortModule,
+    MatTabsModule
 
 
   ],
-  providers: [],
+  providers: [
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

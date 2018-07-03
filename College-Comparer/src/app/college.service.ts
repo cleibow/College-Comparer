@@ -14,6 +14,7 @@ export class CollegeService  {
 
   schools: School[];
   queryString: string = "";
+  opened: boolean;
 
 
 

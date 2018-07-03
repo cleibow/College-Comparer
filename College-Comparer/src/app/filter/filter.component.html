@@ -1,16 +1,20 @@
 <mat-sidenav-container>
-  <mat-sidenav>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" >
+
     <mat-radio-group>
-      <mat-radio-button>
+      <mat-radio-button (click)="AddQueryToString('women_only')">
         Women only
       </mat-radio-button>
-      <mat-radio-button (checked)="AddQueryToString('men_only')">
+      <mat-radio-button (click)="AddQueryToString('men_only')">
         Men only
-
-        </mat-radio-button>
+      </mat-radio-button>
     </mat-radio-group>
+    <mat-
   </mat-sidenav>
   <mat-sidenav-content>
+      <button type="button my-mini-fab" mat-mini-fab (click)="sidenav.toggle()">Click me</button>
+
+
     <app-college>
     </app-college>
   </mat-sidenav-content>

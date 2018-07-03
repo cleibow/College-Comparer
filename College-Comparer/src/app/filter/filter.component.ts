@@ -10,10 +10,12 @@ import { CollegeService } from '../college.service';
 // component manipulates query string in filter service
 export class FilterComponent implements OnInit {
 
+  opened:boolean;
+
   constructor( private _filterService: FilterService ) { }
 
   ngOnInit() {
-
+    console.log("hit the filter")
   }
 
   AddQueryToString(query: string){
