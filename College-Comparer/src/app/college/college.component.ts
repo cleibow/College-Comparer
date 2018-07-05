@@ -12,11 +12,12 @@ export class CollegeComponent implements OnInit {
 
   constructor(private _collegeService: CollegeService, private _filterService: FilterService) { }
 
-  colleges: School[]
+  colleges: School[] = this._collegeService.schools;
 
 
   ngOnInit() {
     this.getColleges();
+    // console.log(this.colleges[1])
 
   }
 
@@ -25,8 +26,10 @@ export class CollegeComponent implements OnInit {
         .subscribe(
           (res) => {
 
-            console.log(res['results'][0]);
-            this.colleges = this._collegeService.convertDataToModel(res['results']);
+            this._collegeService.schools = this._collegeService.convertDataToModel(res['results']);
+            this.colleges = this._collegeService.schools;
+            // save data into service
+
         },
           (error) => {
             console.log(error);

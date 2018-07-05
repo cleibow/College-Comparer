@@ -1,3 +1,4 @@
+import { states } from './../data/states';
 import { FilterService } from './../filter.service';
 import { Component, OnInit } from '@angular/core';
 import { CollegeService } from '../college.service';
@@ -11,11 +12,15 @@ import { CollegeService } from '../college.service';
 export class FilterComponent implements OnInit {
 
   opened:boolean;
+  states;
+
+
 
   constructor( private _filterService: FilterService ) { }
 
   ngOnInit() {
     console.log("hit the filter")
+
   }
 
   AddQueryToString(query: string){
