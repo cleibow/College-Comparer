@@ -1,14 +1,19 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" >
 
-    <mat-radio-group>
-      <mat-radio-button (click)="AddQueryToString('women_only')">
-        Women only
-      </mat-radio-button>
-      <mat-radio-button (click)="AddQueryToString('men_only')">
-        Men only
-      </mat-radio-button>
-    </mat-radio-group>
+    <mat-slider></mat-slider>
+
+<form>
+  <mat-form-field >
+    <input matInput placeholder="Favorite food" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field >
+    <textarea matInput placeholder="Leave a comment"></textarea>
+  </mat-form-field>
+
+</form>
+
   </mat-sidenav>
   <mat-sidenav-content>
       <button type="button my-mini-fab" mat-mini-fab (click)="sidenav.toggle()">Click me</button>

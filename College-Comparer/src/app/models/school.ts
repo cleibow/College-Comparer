@@ -6,8 +6,8 @@ Zip: number;
 Tuition: number;
 Size: number;
 YearFounded: number;
-Women_only: boolean;
-Men_only: boolean;
+Women_only: number;
+Men_only: number;
 Religious_affiliation: number;
 School_url: string;
 

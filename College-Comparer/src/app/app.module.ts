@@ -23,7 +23,8 @@ import {
   MatTableModule,
   MatRadioModule,
   MatSortModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSliderModule
   } from '@angular/material';
 
 
@@ -35,6 +36,7 @@ import {
 
   ],
   imports: [
+    MatSliderModule,
     BrowserModule,
     HttpClientModule,
     MatSidenavModule,
