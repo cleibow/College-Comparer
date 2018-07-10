@@ -1,3 +1,4 @@
+import { SearchParameters } from './../models/search-parameters';
 import { School } from './../models/school';
 import { states } from './../data/states';
 import { FilterService } from './../filter.service';
@@ -14,7 +15,7 @@ import { NullTemplateVisitor } from '@angular/compiler';
 export class FilterComponent implements OnInit {
 
   opened:boolean;
-
+  filterObject: SearchParameters;
 
 
 
@@ -22,7 +23,7 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {
     console.log("hit the filter")
-    this._filterService.search_parameters = {
+    this.filterObject = {
       Name: null,
       City: null,
       State: null,
@@ -38,21 +39,58 @@ export class FilterComponent implements OnInit {
       School_url: null
     }
 
-    this._filterService.FilterParameters();
+    // this.Update();
   }
 
-  // AddQueryToString(query: string){
-  //   this._filterService.AddQuery(query)
-  //   console.log(this._filterService.queryString);
-  // }
+  Update(){
+    // updates the search parameter object in the filter service
+    console.log('am submitting');
+    if(this.filterObject.Name){
+      console.log(this.filterObject.Name);
+      this._filterService.search_parameters.Name = this.filterObject.Name;
+      console.log(this._filterService.search_parameters.Name)
 
-  // RemoveQueryFromString(query: string){
-  //   this._filterService.RemoveQuery(query)
-  // }
+    }
+    if(this.filterObject.City){
+      this.filterObject.City = this.filterObject.City;
+      console.log(this.filterObject.City);
 
-  // ClearQueryString(){
-  //   this._filterService.ClearQueryString();
-  // }
+    }
+    if(this.filterObject.State){
+      this._filterService.search_parameters.State = this.filterObject.State;
+    }
+    if(this.filterObject.Zip){
+      this._filterService.search_parameters.Zip = this.filterObject.Zip;
+    }
+    if(this.filterObject.MinTuition){
+      this._filterService.search_parameters.MinTuition = this.filterObject.MinTuition;
+    }
+    if(this.filterObject.MaxTuition){
+      this._filterService.search_parameters.MaxTuition = this.filterObject.MaxTuition;
+    }
+    if(this.filterObject.MinSize){
+      this._filterService.search_parameters.MinSize = this.filterObject.MinSize;
+    }
+    if(this.filterObject.MaxSize){
+      this._filterService.search_parameters.MaxSize = this.filterObject.MaxSize;
+    }
+    if(this.filterObject.YearFounded){
+      this._filterService.search_parameters.YearFounded = this.filterObject.YearFounded;
+    }
+    if(this.filterObject.Women_only){
+      this._filterService.search_parameters.Women_only = true;
+    }
+    if(this.filterObject.Men_only){
+      this._filterService.search_parameters.Men_only = true;
+    }
+    this._filterService.FilterParameters();
+
+    // filter the school array in the service based on the filter object
+
+  }
+
+
+
 
 
 

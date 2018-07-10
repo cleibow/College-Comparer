@@ -2,15 +2,18 @@
   <mat-sidenav #sidenav mode="side" [(opened)]="opened" >
 
     <mat-slider></mat-slider>
-
-<form>
+<!-- create html form variable  -->
+<form #collegeForm="ngForm">
   <mat-form-field >
-    <input matInput placeholder="Favorite food" value="Sushi">
+    <input matInput [(ngModel)]="filterObject.Name" (change)="Update()"  placeholder="Name" name="Name" ngDefaultControl>
+  </mat-form-field>
+  <mat-form-field >
+    <input matInput [(ngModel)]="filterObject.City" (change)="Update()" placeholder="City" name="City" ngDefaultControl>
   </mat-form-field>
 
-  <mat-form-field >
-    <textarea matInput placeholder="Leave a comment"></textarea>
-  </mat-form-field>
+
+    <button type="submit"  (submit)="Update()">Submit</button>
+
 
 </form>
 

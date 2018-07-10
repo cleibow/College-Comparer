@@ -47,6 +47,9 @@ export class FilterService {
     }
   }
 
+
+
+
   // AddQuery(query: string){
   //   this.queryString += query;
   // }

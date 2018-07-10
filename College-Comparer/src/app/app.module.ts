@@ -26,6 +26,7 @@ import {
   MatTabsModule,
   MatSliderModule
   } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import {
     MatExpansionModule,
     MatTableModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule
 
 
   ],
