@@ -27,13 +27,15 @@ import {
   MatSliderModule
   } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { FilterPipe } from './filter.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CollegeComponent,
-    FilterComponent
+    FilterComponent,
+    FilterPipe
 
   ],
   imports: [

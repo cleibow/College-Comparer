@@ -44,48 +44,9 @@ export class FilterComponent implements OnInit {
 
   Update(){
     // updates the search parameter object in the filter service
-    console.log('am submitting');
-    if(this.filterObject.Name){
-      console.log(this.filterObject.Name);
-      this._filterService.search_parameters.Name = this.filterObject.Name;
-      console.log(this._filterService.search_parameters.Name)
+ 
+    this._filterService.updateParameters(this.filterObject);
 
-    }
-    if(this.filterObject.City){
-      this.filterObject.City = this.filterObject.City;
-      console.log(this.filterObject.City);
-
-    }
-    if(this.filterObject.State){
-      this._filterService.search_parameters.State = this.filterObject.State;
-    }
-    if(this.filterObject.Zip){
-      this._filterService.search_parameters.Zip = this.filterObject.Zip;
-    }
-    if(this.filterObject.MinTuition){
-      this._filterService.search_parameters.MinTuition = this.filterObject.MinTuition;
-    }
-    if(this.filterObject.MaxTuition){
-      this._filterService.search_parameters.MaxTuition = this.filterObject.MaxTuition;
-    }
-    if(this.filterObject.MinSize){
-      this._filterService.search_parameters.MinSize = this.filterObject.MinSize;
-    }
-    if(this.filterObject.MaxSize){
-      this._filterService.search_parameters.MaxSize = this.filterObject.MaxSize;
-    }
-    if(this.filterObject.YearFounded){
-      this._filterService.search_parameters.YearFounded = this.filterObject.YearFounded;
-    }
-    if(this.filterObject.Women_only){
-      this._filterService.search_parameters.Women_only = true;
-    }
-    if(this.filterObject.Men_only){
-      this._filterService.search_parameters.Men_only = true;
-    }
-    this._filterService.FilterParameters();
-
-    // filter the school array in the service based on the filter object
 
   }
 

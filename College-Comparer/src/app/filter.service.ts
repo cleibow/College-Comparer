@@ -2,6 +2,7 @@ import { SearchParameters } from './models/search-parameters';
 import { Injectable } from '@angular/core';
 import { School } from './models/school';
 import { CollegeService } from './college.service';
+import { Subject } from '../../node_modules/rxjs';
 
 
 @Injectable({
@@ -10,42 +11,60 @@ import { CollegeService } from './college.service';
 // query string is used in college component to run queries
 export class FilterService {
   queryString: string = "";
-  search_parameters: SearchParameters;
 
+  searchParameters = new Subject<SearchParameters>();
 
-  constructor( private _collegeService: CollegeService) {
+  constructor() {
 
    }
+   // update search parameters
+   updateParameters(newParameters: SearchParameters){
+     this.searchParameters.next(newParameters);
+   }
 
-  FilterParameters(){
-    if(this.search_parameters.Name){
-      this._collegeService.schools.filter(c => c.Name === this.search_parameters.Name);
+  // method to be called by college component 
+  FilterParameters(filterObject: SearchParameters,  colleges: School[]): School[]{
+    if(filterObject.Name){
+      colleges.filter(c => c.Name === filterObject.Name);
+      // prints properly filtered college
+      console.log(colleges.filter(c => c.Name === filterObject.Name)[0].State);
+      // finds college correctly
+      console.log(colleges.find(c => c.Name === "The Medical Arts School").City);
+      // prints all colleges and is incorrect
+      console.log("the colleges: " + colleges[0].Name);
+      // properly finds the name of the filtered object
+      console.log(filterObject.Name);
+      // indicates we hit the filter method
+      console.log("filtered by name");
+      return colleges;
     }
-    if(this.search_parameters.City){
-      this._collegeService.schools.filter(c => c.City === this.search_parameters.City);
+    if(filterObject.City){
+      colleges.filter(c => c.City === filterObject.City);
     }
-    if(this.search_parameters.State){
-      this._collegeService.schools.filter(c => c.State === this.search_parameters.State);
+    if(filterObject.State){
+      colleges.filter(c => c.State === filterObject.State);
     }
-    if(this.search_parameters.Zip){
-      this._collegeService.schools.filter(c => c.Zip === this.search_parameters.Zip);
+    if(filterObject.Zip){
+      colleges.filter(c => c.Zip === filterObject.Zip);
     }
-    if(this.search_parameters.MinTuition && this.search_parameters.MaxTuition){
-      this._collegeService.schools.filter(c => c.Tuition <= this.search_parameters.MaxTuition && c.Tuition >= this.search_parameters.MinTuition);
+    if(filterObject.MinTuition && filterObject.MaxTuition){
+      colleges.filter(c => c.Tuition <= filterObject.MaxTuition && c.Tuition >= filterObject.MinTuition);
     }
-    if(this.search_parameters.MinSize && this.search_parameters.MaxSize){
-      this._collegeService.schools.filter(c => c.Size <= this.search_parameters.MaxSize && c.Tuition >= this.search_parameters.MinSize);
+    if(filterObject.MinSize && filterObject.MaxSize){
+      colleges.filter(c => c.Size <= filterObject.MaxSize && c.Tuition >= filterObject.MinSize);
     }
-    if(this.search_parameters.YearFounded){
-      this._collegeService.schools.filter(c => c.YearFounded === this.search_parameters.YearFounded);
+    if(filterObject.YearFounded){
+      colleges.filter(c => c.YearFounded === filterObject.YearFounded);
     }
-    if(this.search_parameters.Women_only){
-      this._collegeService.schools.filter(c => c.Women_only === 1);
+    if(filterObject.Women_only){
+      colleges.filter(c => c.Women_only === 1);
     }
-    if(this.search_parameters.Men_only){
-      this._collegeService.schools.filter(c => c.Men_only === 1);
+    if(filterObject.Men_only){
+      colleges.filter(c => c.Men_only === 1);
     }
+    return colleges;
   }
+
 
 
 
