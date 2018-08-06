@@ -3,13 +3,22 @@
 
     <mat-slider></mat-slider>
 <!-- create html form variable  -->
+
 <form #collegeForm="ngForm">
+  
   <mat-form-field >
     <input matInput [(ngModel)]="filterObject.Name" (change)="Update()"  placeholder="Name" name="Name" ngDefaultControl>
   </mat-form-field>
   <mat-form-field >
     <input matInput [(ngModel)]="filterObject.City" (change)="Update()" placeholder="City" name="City" ngDefaultControl>
   </mat-form-field>
+  <br>
+  <mat-form-field >
+      <input matInput [(ngModel)]="filterObject.State" (change)="Update()"  placeholder="State" name="Name" ngDefaultControl>
+    </mat-form-field>
+    <mat-form-field >
+      <input matInput [(ngModel)]="filterObject.Zip" (change)="Update()" placeholder="Zip" name="City" ngDefaultControl>
+    </mat-form-field>
 
 
     <button type="submit"  (submit)="Update()">Submit</button>

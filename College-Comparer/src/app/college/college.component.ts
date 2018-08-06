@@ -4,55 +4,58 @@ import { CollegeService } from './../college.service';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from '../../../node_modules/rxjs';
 import { SearchParameters } from 'src/app/models/search-parameters';
+import { FilterPipe } from '../filter.pipe';
 
 @Component({
   selector: 'app-college',
   templateUrl: './college.component.html',
-  styleUrls: ['./college.component.css']
+  styleUrls: ['./college.component.css'],
+  providers: [FilterPipe]
 })
 export class CollegeComponent implements OnInit {
 
-  constructor(private _collegeService: CollegeService, private _filterService: FilterService) { }
+  constructor(private _collegeService: CollegeService, private _filterService: FilterService, private _filterPipe: FilterPipe) { }
 
-  colleges: School[] = this._collegeService.schools
+  colleges: School[];
+  filteredColleges: School[];
   subscription: Subscription;
   searchedParameters: SearchParameters;
 
-  testData: string[] = ['apple', 'banana', 'orange', 'grape'];
 
 
 
   ngOnInit() {
+    
     this.getColleges();
-    console.log(this.colleges[1])
     this.subscription = this._filterService.searchParameters
       .subscribe
         (params => {
         this.searchedParameters = params;
+        this.filteredColleges = this._filterPipe.transform(this.colleges, this.searchedParameters);
+        console.log(this.filteredColleges);
         },
         ( error => {
           console.log(error);
         })
-    )
-    console.log(this.testFilter(this.testData));
+    );
+
   
 
   }
 
-  testFilter(data: string[]): string[]{
-    return data.filter(d => d.charAt(1) === 'o');
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
+
 
   getColleges(){
     this._collegeService.getAllSchools(this._filterService.queryString)
         .subscribe(
           (res) => {
+            console.log(res);
 
             this._collegeService.schools =  this._collegeService.convertDataToModel(res['results']);
-            // so values are stored on init
-            console.log(this._collegeService.schools[0]);
-
-            this.colleges = this._collegeService.schools
+            this.colleges = this._collegeService.schools;
             // save data into service
 
         },
@@ -61,5 +64,6 @@ export class CollegeComponent implements OnInit {
           }
         )
       }
+  
 
 }

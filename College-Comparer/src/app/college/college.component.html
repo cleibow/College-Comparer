@@ -1,7 +1,8 @@
 
 
-<div class="row">
-    <div class="col-sm-4" *ngFor="let college of colleges | filter ">
+<div class="row" *ngIf="!filteredColleges">
+  
+    <div class="col-sm-4" *ngFor="let college of colleges ">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{college.Name}}</h5>
@@ -12,4 +13,17 @@
     </div>
 
   </div>
+  <div class="row">
+  
+      <div class="col-sm-4" *ngFor="let college of filteredColleges ">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{college.Name}}</h5>
+            <p class="card-text">{{college.City}}, {{college.State}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
 
